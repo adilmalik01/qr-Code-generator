@@ -4,17 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Qr Code</title>
+    <!-- favicon Link  -->
+    <link rel="shortcut icon"
+        href="https://th.bing.com/th/id/R.98ada4af689251893f16fcfd7392c385?rik=udAHc3u2dSq%2fwg&pid=ImgRaw&r=0"
+        type="image/x-icon">
+    <!-- style.css      -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+
+
 </head>
 
 <body>
+    <div class="main-div d-flex justify-content-center align-items-center">
+        <div class="inner-div">
+            <div class="card" style="width: 24rem; height: 18rem;">
+                <div class="card-head  d-flex justify-content-center align-items-center">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="box">
+
+                    </div>
+                </div>
+                <div class="card-footer d-grid gap-2 col-18">
+                    <button class="btn btn-primary" type="button">Generate</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<h1>this is first COmmit</h1>
-<h2>this is 2nd commit</h2>
-<h2>this is 2nd commitssdadasd</h2>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        let btn = document.querySelector(".btn")
+        const Generate = (e) => {
+            let img = document.createElement("img")
+
+            console.log("ok")
+        }
+
+        btn.addEventListener("click", Generate)
+    </script>
 </body>
 
 </html>
