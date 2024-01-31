@@ -21,20 +21,19 @@
 <body>
     <div class="main-div d-flex justify-content-center align-items-center">
         <div class="inner-div">
-            <div class="card" style="width: 24rem; height: 18rem;">
-                <div class="card-head  d-flex justify-content-center align-items-center">
-                    <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-lg">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="box">
+            <div class="card-head">
+                <h3>Qr Code Generator</h3>
+            </div>
+            <div class="input-div">
+                <input placeholder="Enter something And generate the Qr code" type="text" name="" id="userInput">
+            </div>
+            <div class="card-body">
+                <div id="box">
 
-                    </div>
                 </div>
-                <div class="card-footer d-grid gap-2 col-18">
-                    <button class="btn btn-primary" type="button">Generate</button>
+                <div class="footer">
+                    <button class="gene-btn">Generate Code</button>
+                    <p class="show">please wait 5 seconds</p>
                 </div>
             </div>
         </div>
@@ -44,12 +43,49 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module">
-        let btn = document.querySelector(".btn")
-        const Generate = (e) => {
-            let img = document.createElement("img")
+    <!-- sweetalert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            console.log("ok")
+    <script type="module">
+        let userInp = document.querySelector("#userInput")
+        let btn = document.querySelector(".gene-btn")
+        let img_box = document.querySelector("#box")
+        let main = document.querySelector(".inner-div")
+        let show_para = document.querySelector(".show")
+
+        const Generate = (e) => {
+            if (userInp.value) {
+
+                let img = document.createElement("img")
+                img.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${userInp.value}`
+
+                img_box.appendChild(img)
+                main.style.height = '500px'
+                img_box.style.height = '500px'
+                btn.style.visibility = 'hidden'
+                show_para.style.display = "flex"
+
+                setTimeout(() => {
+                    img.src = ''
+                    console.log('ok');
+                    main.style.height = '250px'
+                    img_box.style.height = '50px'
+                    btn.style.visibility = 'visible'
+                    show_para.style.display = "none"
+
+
+                }, 5000)
+                userInp.value = ''
+            }
+            else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "please Write something!",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            }
         }
 
         btn.addEventListener("click", Generate)
